@@ -1,30 +1,30 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o PES2UG22CS360 main.cpp'  
+                    sh 'g++ -o main/PES2UG22CS360 main/hello.cpp' // Compile hello.cpp
                 }
             }
         }
-        
+
         stage('Test') {
             steps {
                 script {
-                    sh './PES2UG22CS360' 
+                    sh './main/PES2UG22CS360' // Run the compiled executable
                 }
             }
         }
-        
+
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                echo 'Deploying application...' // Simulate deployment
             }
         }
     }
-    
+
     post {
         failure {
             echo 'Pipeline failed'
